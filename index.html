@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="Bookmarks">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmarks</title>
+</head>
+<body>
+    <div ng-controller="MainController">
+        <h1>Bienvenido {{name}}</h1>
+        <ul>
+            <li ng-repeat="category in categories">{{category}}</li>
+        </ul>
+    </div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
