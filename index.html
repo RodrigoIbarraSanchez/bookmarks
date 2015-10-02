@@ -3,23 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Bookmarks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
     <div ng-controller="MainController">
-        <h1>Bienvenido {{name}}</h1>
-        <ul>
-            <li ng-repeat="category in categories">{{category}}</li>
-        </ul>
-        <ul>
-            <li ng-repeat="bookmark in bookmarks">
-                <p>
-                    <a href="{{bookmark.url}}">{{bookmark.name}}</a><br>
-                    <small>{{bookmark.url}}</small>
-                </p>
-            </li>
-        </ul>
-    </div>
+       <div class="wrapper">
+           <!-- Header -->
+           
+           <header>
+               <div class="row">
+                   <div class="brand col-sm-3">
+                       <a href="#" class="navbar-brand">
+                           <i class="glyphicon glyphicon-heart-empty">
+                               <span class="heading-front">Bookmarks App</span>
+                           </i>
+                       </a>
+                   </div>
+               </div>
+           </header>
+           
+           <div class="box">
+               <div class="row">
+                   <!-- Sidebar -->
+                   <div class="column col-sm-3" id="sidebar">
+                    <p class="nav-title">
+                        Categories
+                        <a href="#" class="pull-right"><i class="glyphicon glyphicon-folder-open"></i></a>
+                    </p>
+                    <ul class="nav">
+                        <li ng-repeat="category in categories" ng-class="{active: isCurrentCategory(category)}">
+                            <a href="#" ng-click="setCurrentCategory(category)"> <i class="glyphicon glyphicon-tags"></i>{{category}}</a>
+                        </li>
+                    </ul>
+                   </div>
+                   <!-- /Sidebar -->
+
+                   <!-- Main -->
+                   <div class="column col-sm-9" id="main">
+                    <div class="padding">
+                       <div class="full col-sm-9">
+                           <!-- Content -->
+                           <h2>
+                               Category: {{currentCategory}}
+                               <a href="#" class="btn btn-primary btn-xs pull-right"><i class="glyphicon glyphicon-plus-sign"></i>New Bookmark</a>
+                           </h2>
+                           <ul>
+                               <li ng-repeat="bookmark in bookmarks | filter: {category: currentCategory}">
+                                   <p>
+                                       <a href="{{bookmark.ul}}">{{bookmark.name}}</a>
+                                       <i class="glyphicon glyphicon-trash"></i>
+                                       <i class="glyphicon glyphicon-pencil"></i><br>
+                                       <small>{{bookmark.url}}</small>
+                                   </p>
+                               </li>
+                           </ul>
+                       </div> 
+                    </div>
+                   </div>
+                   <!-- /Main --> 
+               </div>
+           </div>
+      </div>
+           
+           
+       <!--<div>
+            <h1>Bienvenido {{name}}</h1>
+            <ul>
+                <li ng-repeat="category in categories" ng-class="{active: isCurrentCategory(category)}">
+                    <a href="#" ng-click="setCurrentCategory(category)">{{category}}</a>
+                </li>
+            </ul>
+
+            <ul>
+                <li ng-repeat="bookmark in bookmarks | filter: {category: currentCategory}">
+                    <p>
+                        <a href="{{bookmark.url}}">{{bookmark.name}}</a><br>
+                        <small>{{bookmark.url}}</small>
+                    </p>
+                </li>
+            </ul>
+       </div>-->
     
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Bootstrap - Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="js/app.js"></script>
 </body>
