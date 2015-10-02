@@ -25,6 +25,10 @@
         $scope.isCurrentCategory = function(category){
             return $scope.currentCategory === category;
         }
+        
+        $scope.save = function(bookmark) {
+            
+        }
     });
     
 })();
